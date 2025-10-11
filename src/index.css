@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Heritage Color Palette */
+    --parchment-base: 35 45% 80%;
+    --parchment-dark: 35 40% 70%;
+    --burgundy-deep: 0 48% 29%;
+    --burgundy-rich: 0 66% 32%;
+    --cream-rich: 40 70% 95%;
+    --cream-warm: 40 50% 97%;
+    --gold-antique: 43 48% 60%;
+    --gold-bright: 45 67% 53%;
+    --brown-deep: 20 40% 18%;
+    --brown-medium: 20 30% 26%;
+    --terracotta-warm: 25 35% 57%;
+    --bronze-copper: 30 35% 45%;
+    --teal-deep: 180 37% 27%;
+    --stone-gray: 0 0% 55%;
+
+    /* Semantic Tokens */
+    --background: 35 45% 80%;
+    --foreground: 20 40% 18%;
+    --card: 40 50% 97%;
+    --card-foreground: 20 40% 18%;
+    --popover: 40 50% 97%;
+    --popover-foreground: 20 40% 18%;
+    --primary: 0 48% 29%;
+    --primary-foreground: 40 70% 95%;
+    --secondary: 35 40% 70%;
+    --secondary-foreground: 20 40% 18%;
+    --muted: 35 40% 70%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 43 48% 60%;
+    --accent-foreground: 20 40% 18%;
+    --destructive: 0 66% 32%;
+    --destructive-foreground: 40 70% 95%;
+    --border: 30 35% 45%;
+    --input: 40 70% 95%;
+    --ring: 43 48% 60%;
+    --radius: 0.5rem;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(0 48% 29%) 0%, hsl(20 40% 18%) 100%);
+    --gradient-button: linear-gradient(135deg, hsl(0 66% 32%) 0%, hsl(0 48% 29%) 100%);
+    --gradient-text: linear-gradient(135deg, hsl(40 70% 95%) 0%, hsl(43 48% 60%) 100%);
+    --gradient-subtle: radial-gradient(ellipse at center, hsl(35 45% 80%) 0%, hsl(35 40% 70%) 100%);
+
+    /* Shadows */
+    --shadow-elegant: 0 12px 40px rgba(62, 34, 22, 0.15);
+    --shadow-hover: 0 20px 60px rgba(62, 34, 22, 0.25);
+    --shadow-glow: 0 0 20px rgba(212, 175, 55, 0.4);
+    --shadow-text-hero: 3px 6px 12px rgba(0, 0, 0, 0.4);
+
+    /* Typography */
+    --font-display: 'Cinzel', serif;
+    --font-heading: 'Cormorant Garamond', serif;
+    --font-decorative: 'Great Vibes', cursive;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-serif: 'Lora', serif;
+    --font-devanagari: 'Noto Serif Devanagari', serif;
+
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    background: var(--gradient-subtle);
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #root {
+    position: relative;
+    z-index: 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+  
+  .font-decorative {
+    font-family: var(--font-decorative);
+  }
+  
+  .font-devanagari {
+    font-family: var(--font-devanagari);
+  }
+
+  .text-shadow-hero {
+    text-shadow: var(--shadow-text-hero);
+  }
+
+  .gradient-text {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .heritage-card {
+    background: hsl(var(--card));
+    border: 4px solid hsl(var(--accent));
+    box-shadow: var(--shadow-elegant);
+    border-radius: 12px;
+    transition: var(--transition-slow);
+  }
+
+  .heritage-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: hsl(var(--gold-bright));
+  }
+
+  .ornate-border-top {
+    position: relative;
+  }
+
+  .ornate-border-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 10px;
+    background: repeating-linear-gradient(
+      90deg,
+      hsl(var(--accent)) 0px,
+      hsl(var(--accent)) 10px,
+      transparent 10px,
+      transparent 12px,
+      hsl(var(--bronze-copper)) 12px,
+      hsl(var(--bronze-copper)) 14px,
+      transparent 14px,
+      transparent 24px
+    );
+  }
+
+  .loading-overlay {
+    background: rgba(107, 40, 40, 0.92);
+    backdrop-filter: blur(8px);
+  }
+}
