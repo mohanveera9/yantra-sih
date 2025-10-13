@@ -98,13 +98,23 @@ export default {
           "0%, 100%": { filter: "drop-shadow(0 0 10px rgba(212, 175, 55, 0.4))" },
           "50%": { filter: "drop-shadow(0 0 20px rgba(212, 175, 55, 0.8))" }
         },
+        "move-left-to-right": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(calc(100vw + 128px))" }
+        },
+        "move-right-to-left": {
+          "0%": { transform: "translateX(0) scaleX(-1)" },
+          "100%": { transform: "translateX(calc(-100vw - 128px)) scaleX(-1)" }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in": "fade-in 0.6s ease-out",
-        "rotate-yantra": "rotate-yantra 3s linear infinite",
+        "fade-in": "fade-in 0.6s ease-out forwards",
+        "rotate-yantra": "rotate-yantra 60s linear infinite",
         "glow-pulse": "glow-pulse 2s ease-in-out infinite",
+        "move-left-to-right": "move-left-to-right 15s linear infinite",
+        "move-right-to-left": "move-right-to-left 15s linear infinite",
       },
     },
   },

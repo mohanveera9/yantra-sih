@@ -33,43 +33,55 @@ export const Navbar = () => {
           <div className="flex items-center gap-8">
             <Link
               to="/"
-              className={`font-display text-[15px] font-medium uppercase tracking-[0.1em] transition-all ${
+              className={`font-display text-[15px] font-medium uppercase tracking-[0.1em] transition-all relative ${
                 isActive("/")
-                  ? "text-heritage-cream border-b-2 border-heritage-gold pb-1"
-                  : "text-heritage-gold hover:text-heritage-cream hover:text-shadow-[0_0_10px_rgba(212,175,55,0.5)]"
+                  ? "text-heritage-cream"
+                  : "text-heritage-gold hover:text-heritage-cream hover:animate-[golden-glow_1.5s_ease-in-out]"
               }`}
             >
               Home
+              {isActive("/") && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-heritage-gold to-transparent animate-pulse" />
+              )}
             </Link>
             <Link
               to="/about"
-              className={`font-display text-[15px] font-medium uppercase tracking-[0.1em] transition-all ${
+              className={`font-display text-[15px] font-medium uppercase tracking-[0.1em] transition-all relative ${
                 isActive("/about")
-                  ? "text-heritage-cream border-b-2 border-heritage-gold pb-1"
-                  : "text-heritage-gold hover:text-heritage-cream"
+                  ? "text-heritage-cream"
+                  : "text-heritage-gold hover:text-heritage-cream hover:animate-[golden-glow_1.5s_ease-in-out]"
               }`}
             >
               About
+              {isActive("/about") && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-heritage-gold to-transparent animate-pulse" />
+              )}
             </Link>
             <Link
               to="/learn"
-              className={`font-display text-[15px] font-medium uppercase tracking-[0.1em] transition-all ${
+              className={`font-display text-[15px] font-medium uppercase tracking-[0.1em] transition-all relative ${
                 isActive("/learn")
-                  ? "text-heritage-cream border-b-2 border-heritage-gold pb-1"
-                  : "text-heritage-gold hover:text-heritage-cream"
+                  ? "text-heritage-cream"
+                  : "text-heritage-gold hover:text-heritage-cream hover:animate-[golden-glow_1.5s_ease-in-out]"
               }`}
             >
               Learn
+              {isActive("/learn") && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-heritage-gold to-transparent animate-pulse" />
+              )}
             </Link>
             <Link
               to="/create"
-              className={`font-display text-[15px] font-medium uppercase tracking-[0.1em] transition-all ${
+              className={`font-display text-[15px] font-medium uppercase tracking-[0.1em] transition-all relative ${
                 isActive("/create")
-                  ? "text-heritage-cream border-b-2 border-heritage-gold pb-1"
-                  : "text-heritage-gold hover:text-heritage-cream"
+                  ? "text-heritage-cream"
+                  : "text-heritage-gold hover:text-heritage-cream hover:animate-[golden-glow_1.5s_ease-in-out]"
               }`}
             >
               Create
+              {isActive("/create") && (
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-heritage-gold to-transparent animate-pulse" />
+              )}
             </Link>
 
             {isAuthenticated ? (

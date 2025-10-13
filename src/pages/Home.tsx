@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import heroImage from "@/assets/hero-yantra.jpg";
+import bgImage from "../assets/bg1.png";
 
 const Home = () => {
   return (
@@ -10,9 +11,10 @@ const Home = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section 
-        className="pt-32 pb-40 px-8 relative overflow-hidden"
-        style={{ 
+      <section
+        className="pb-40 px-8 relative"
+        style={{
+          paddingTop: 'calc(var(--nav-height) + 16rem)',
           background: 'var(--gradient-hero)',
           backgroundImage: `linear-gradient(135deg, rgba(107, 40, 40, 0.85) 0%, rgba(62, 34, 22, 0.85) 100%), url(${heroImage})`,
           backgroundSize: 'cover',
@@ -27,7 +29,7 @@ const Home = () => {
           }}></div>
         </div>
 
-        <div className="container mx-auto max-w-[1200px] text-center relative z-10">
+        <div className="container mx-auto max-w-[1200px] text-center relative z-10 top-[-30px]">
           <h1 className="font-display text-7xl lg:text-8xl font-black uppercase tracking-[0.15em] mb-6 gradient-text text-shadow-hero animate-fade-in">
             YantraVeda
           </h1>
@@ -35,15 +37,28 @@ const Home = () => {
             यंत्रवेद
           </p>
           <p className="font-serif text-xl leading-relaxed max-w-[900px] mx-auto text-heritage-parchment mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            Reviving ancient India's monumental astronomical instruments through computational reconstruction, 
+            Reviving ancient India's monumental astronomical instruments through computational reconstruction,
             transforming sacred geometry and celestial mechanics into interactive, location-specific experiences.
           </p>
         </div>
       </section>
 
       {/* Feature Cards */}
-      <section className="py-20 px-8">
+      <section
+        className="py-24 px-8 relative bg-repeat mb-14"
+
+      >
         <div className="container mx-auto max-w-[1400px]">
+          {/* Section Header */}
+          <div className="text-center mb-16 animate-fade-in">
+            <h2 className="font-display text-6xl lg:text-7xl font-bold uppercase tracking-wider text-heritage-burgundy mb-4">
+              Explore YantraVeda
+            </h2>
+            <p className="font-body text-lg text-heritage-brown/80 max-w-[800px] mx-auto leading-relaxed">
+              Immerse yourself in the ancient astronomical wisdom of India through interactive learning and personalized creation
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-10">
             {/* Learn Card */}
             <div className="heritage-card p-12 relative animate-fade-in" style={{ animationDelay: '0.4s' }}>
@@ -52,12 +67,10 @@ const Home = () => {
               <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-heritage-gold rounded-bl-lg"></div>
               <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-heritage-gold rounded-br-lg"></div>
 
-              <h2 className="font-heading text-5xl font-bold text-heritage-burgundy mb-6">
-                Learn
-              </h2>
+              <h2 className="font-heading text-5xl font-bold text-heritage-burgundy mb-6">Learn</h2>
               <p className="font-body text-lg leading-relaxed text-heritage-brown/90 mb-8">
-                Journey through India's astronomical golden age—discover the science and celestial mechanics 
-                behind instruments like the Samrat Yantra and Rama Yantra, where ancient masters predicted 
+                Journey through India's astronomical golden age—discover the science and celestial mechanics
+                behind instruments like the Samrat Yantra and Rama Yantra, where ancient masters predicted
                 eclipses and measured the universe with breathtaking precision.
               </p>
               <Link to="/learn">
@@ -74,12 +87,10 @@ const Home = () => {
               <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 border-heritage-gold rounded-bl-lg"></div>
               <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 border-heritage-gold rounded-br-lg"></div>
 
-              <h2 className="font-heading text-5xl font-bold text-heritage-burgundy mb-6">
-                Create
-              </h2>
+              <h2 className="font-heading text-5xl font-bold text-heritage-burgundy mb-6">Create</h2>
               <p className="font-body text-lg leading-relaxed text-heritage-brown/90 mb-8">
-                Become a celestial architect. Enter your location and let YantraVeda calculate authentic 
-                dimensions for an astronomical instrument calibrated to your latitude—bringing ancient science 
+                Become a celestial architect. Enter your location and let YantraVeda calculate authentic
+                dimensions for an astronomical instrument calibrated to your latitude—bringing ancient science
                 to your doorstep.
               </p>
               <Link to="/create">

@@ -65,7 +65,7 @@ const Create = () => {
     if (!validateInputs()) return;
 
     setIsLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       const mockResponse = {
@@ -74,9 +74,9 @@ const Create = () => {
           yantra_slug: selectedYantra
         },
         result: {
-          yantra_name: selectedYantra === "samrat-yantra" ? "Samrat Yantra" : 
-                       selectedYantra === "dhruva-darshak-pattika" ? "Dhruva Darshak Pattika" : 
-                       "Rama Yantra",
+          yantra_name: selectedYantra === "samrat-yantra" ? "Samrat Yantra" :
+            selectedYantra === "dhruva-darshak-pattika" ? "Dhruva Darshak Pattika" :
+              "Rama Yantra",
           dimensions: {
             gnomon_base_length: { value: 44.0, units: "m" },
             gnomon_height: { value: 22.35, units: "m" },
@@ -91,7 +91,7 @@ const Create = () => {
       setResults(mockResponse);
       setIsLoading(false);
       toast.success("Calculations complete!");
-      
+
       setTimeout(() => {
         resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
@@ -108,9 +108,14 @@ const Create = () => {
     <div className="min-h-screen flex flex-col">
       <Navbar />
       {isLoading && <LoadingOverlay />}
+      <div className="text-center py-12 pt-28 bg-heritage-parchment-dark">
+        <h1 className="font-display text-6xl font-bold text-heritage-burgundy">
+         YantraSrishti (यन्त्रसृष्टि)
+        </h1>
+      </div>
+      <div className="pt-24 pb-16 px-8 flex-1 bg-heritage-parchment">
 
-      <div className="pt-24 pb-16 px-8 flex-1">
-        <div className="container mx-auto max-w-[1400px]">
+        <div className="container mx-auto max-w-[1400px] ">
           <div className="grid md:grid-cols-[45%_55%] gap-16 mb-16">
             {/* Form Section */}
             <div className="heritage-card p-12 animate-fade-in">
@@ -162,9 +167,9 @@ const Create = () => {
                   </select>
                 </div>
 
-                <Button 
-                  variant="secondary" 
-                  size="lg" 
+                <Button
+                  variant="secondary"
+                  size="lg"
                   onClick={handleUseCurrentLocation}
                   className="w-full"
                 >
@@ -172,9 +177,9 @@ const Create = () => {
                   Use Current Location
                 </Button>
 
-                <Button 
-                  variant="hero" 
-                  size="lg" 
+                <Button
+                  variant="hero"
+                  size="lg"
                   onClick={handleGenerate}
                   className="w-full mt-8"
                 >
@@ -185,9 +190,9 @@ const Create = () => {
 
             {/* Map Placeholder */}
             <div className="border-4 border-heritage-bronze rounded-lg overflow-hidden shadow-[0_12px_40px_rgba(62,34,22,0.15)] min-h-[600px] relative animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <img 
-                src={indiaMap} 
-                alt="Heritage Map of India" 
+              <img
+                src={indiaMap}
+                alt="Heritage Map of India"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-heritage-burgundy/10 flex items-center justify-center">

@@ -1,22 +1,106 @@
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import { Link } from "react-router-dom";
+import divisor from "../assets/divisor.svg";
+import ele from "../assets/ele.svg";
 
 export const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-heritage-brown to-[#2A1810] text-heritage-parchment border-t-4 border-heritage-gold pt-16 pb-10 relative">
-      <div className="absolute top-0 left-0 right-0 h-3 bg-repeat-x" style={{
-        backgroundImage: `repeating-linear-gradient(
-          90deg,
-          hsl(var(--gold-antique)) 0px,
-          hsl(var(--gold-antique)) 10px,
-          transparent 10px,
-          transparent 12px,
-          hsl(var(--bronze-copper)) 12px,
-          hsl(var(--bronze-copper)) 14px,
-          transparent 14px,
-          transparent 24px
-        )`
-      }}></div>
+    <footer className="bg-gradient-to-b from-heritage-brown to-[#2A1810] text-heritage-parchment pt-16 pb-10 relative">
+      {/* Decorative moving elephants */}
+      {/* Decorative moving elephants */}
+      {/* Decorative moving elephants */}
+      <div className="absolute w-full z-5" style={{ bottom: "calc(100% - 8px)" }} >
+        <img
+          src={ele}
+          alt=""
+          className="w-32 h-auto animate-move-left-to-right "
+          style={{ left: '-64px', animationDuration: "25s", animationDelay: "0s" }}
+        />
+      </div>
+
+      <div className="absolute w-full z-5" style={{ bottom: "calc(100% - 8px)" }} >
+        <img
+          src={ele}
+          alt=""
+          className="w-32 h-auto animate-move-left-to-right "
+          style={{ left: '-64px', animationDuration: "25s", animationDelay: "-2.5s" }}
+        />
+      </div>
+
+      <div className="absolute w-full z-5" style={{ bottom: "calc(100% - 8px)" }} >
+        <img
+          src={ele}
+          alt=""
+          className="w-32 h-auto animate-move-left-to-right "
+          style={{ left: '-64px', animationDuration: "25s", animationDelay: "-5s" }}
+        />
+      </div>
+
+      <div className="absolute w-full z-5" style={{ bottom: "calc(100% - 8px)" }} >
+        <img
+          src={ele}
+          alt=""
+          className="w-32 h-auto animate-move-left-to-right "
+          style={{ left: '-64px', animationDuration: "25s", animationDelay: "-7.5s" }}
+        />
+      </div>
+
+      <div className="absolute w-full z-5" style={{ bottom: "calc(100% - 8px)" }} >
+        <img
+          src={ele}
+          alt=""
+          className="w-32 h-auto animate-move-left-to-right "
+          style={{ left: '-64px', animationDuration: "25s", animationDelay: "-10s" }}
+        />
+      </div>
+
+      <div className="absolute w-full z-5" style={{ bottom: "calc(100% - 8px)" }} >
+        <img
+          src={ele}
+          alt=""
+          className="w-32 h-auto animate-move-left-to-right "
+          style={{ left: '-64px', animationDuration: "25s", animationDelay: "-12.5s" }}
+        />
+      </div>
+
+      <div className="absolute w-full z-5" style={{ bottom: "calc(100% - 8px)" }} >
+        <img
+          src={ele}
+          alt=""
+          className="w-32 h-auto animate-move-left-to-right "
+          style={{ left: '-64px', animationDuration: "25s", animationDelay: "-15s" }}
+        />
+      </div>
+
+      <div className="absolute w-full z-5" style={{ bottom: "calc(100% - 8px)" }} >
+        <img
+          src={ele}
+          alt=""
+          className="w-32 h-auto animate-move-left-to-right "
+          style={{ left: '-64px', animationDuration: "25s", animationDelay: "-17.5s" }}
+        />
+      </div>
+
+      <div className="absolute w-full z-5" style={{ bottom: "calc(100% - 8px)" }} >
+        <img
+          src={ele}
+          alt=""
+          className="w-32 h-auto animate-move-left-to-right "
+          style={{ left: '-64px', animationDuration: "25s", animationDelay: "-20s" }}
+        />
+      </div>
+
+      <div className="absolute w-full z-5" style={{ bottom: "calc(100% - 8px)" }} >
+        <img
+          src={ele}
+          alt=""
+          className="w-32 h-auto animate-move-left-to-right "
+          style={{ left: '-64px', animationDuration: "25s", animationDelay: "-22.5s" }}
+        />
+      </div>
+      {/* Original divisor */}
+      <img src={divisor} alt="Mohan" className="top-0 left-0 absolute w-full" />
+      <div className="pt-10"></div>
 
       <div className="container mx-auto px-8 max-w-[1400px]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">

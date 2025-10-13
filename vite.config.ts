@@ -14,4 +14,5 @@ export default defineConfig(({ mode }: { mode: string }) => ({
       "@": path.resolve(process.cwd(), "./src"),
     },
   },
+  assetsInclude: ['**/*.glb', '**/*.gltf'], // Add this line
 }));

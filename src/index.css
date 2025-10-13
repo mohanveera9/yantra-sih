@@ -69,6 +69,8 @@ All colors MUST be HSL.
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Fixed navbar height so we can account for it when scrolling */
+    --nav-height: 70px;
   }
 }
 
@@ -79,6 +81,8 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
+    /* Ensure anchored scrolling accounts for the fixed navbar */
+    scroll-padding-top: var(--nav-height);
   }
 
   body {
