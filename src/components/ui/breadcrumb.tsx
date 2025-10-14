@@ -3,6 +3,7 @@ import { Slot } from "@radix-ui/react-slot";
 import { ChevronRight, MoreHorizontal } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import { Link, useLocation } from "react-router-dom";
 
 const Breadcrumb = React.forwardRef<
   HTMLElement,
@@ -87,4 +88,99 @@ export {
   BreadcrumbPage,
   BreadcrumbSeparator,
   BreadcrumbEllipsis,
+  // higher-level helper
+  Breadcrumbs,
 };
+
+// Higher-level breadcrumbs builder that consumes the current location
+// and renders clickable crumbs. Supports a labelMapping for dynamic
+// routes (e.g. {'/book/slug-value': 'Book Title'}) and optional
+// `connections` to render related links (like siblings or anchors).
+type Connection = { label: string; to: string };
+
+type BreadcrumbsProps = {
+  labelMapping?: Record<string, string>;
+  // optional mapping from the accumulated path to the link destination
+  routeMapping?: Record<string, string>;
+  connections?: Connection[];
+  showHome?: boolean;
+  homeTo?: string;
+};
+
+function titleizeSegment(seg: string) {
+  if (!seg) return "";
+  // decode and replace hyphens/underscores
+  const s = decodeURIComponent(seg).replace(/[-_]/g, " ");
+  return s.replace(/(^|\s)\S/g, (t) => t.toUpperCase());
+}
+
+function Breadcrumbs({ labelMapping, routeMapping, connections, showHome = true, homeTo = "/" }: BreadcrumbsProps) {
+  const { pathname } = useLocation();
+
+  // handle root
+  if (!pathname) return null;
+
+  const parts = pathname.split("/").filter(Boolean);
+  const crumbs: { to: string; label: string }[] = [];
+
+  // accumulate path
+  parts.reduce((acc, part) => {
+    const to = acc === "/" ? `/${part}` : `${acc}/${part}`;
+    const mapped = labelMapping && labelMapping[to];
+    crumbs.push({ to, label: mapped ?? titleizeSegment(part) });
+    return to;
+  }, "/");
+
+  return (
+    <Breadcrumb aria-label="breadcrumb">
+      <BreadcrumbList>
+        {showHome && (
+          <>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link to={homeTo}>Home</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            {crumbs.length > 0 && <BreadcrumbSeparator />}
+          </>
+        )}
+
+        {crumbs.map((c, idx) => {
+          const isLast = idx === crumbs.length - 1;
+          return (
+            <React.Fragment key={c.to}>
+                  <BreadcrumbItem>
+                    {isLast ? (
+                      <BreadcrumbPage>{c.label}</BreadcrumbPage>
+                    ) : (
+                      <BreadcrumbLink asChild>
+                        {/** allow overriding the target route for a crumb (e.g. map '/book' label to '/learn' route) */}
+                        <Link to={routeMapping?.[c.to] ?? c.to}>{c.label}</Link>
+                      </BreadcrumbLink>
+                    )}
+                  </BreadcrumbItem>
+              {idx < crumbs.length - 1 && <BreadcrumbSeparator />}
+            </React.Fragment>
+          );
+        })}
+
+        {/* render connections as small inline links after a separator */}
+        {connections && connections.length > 0 && (
+          <>
+            <BreadcrumbSeparator />
+            {connections.map((conn, i) => (
+              <React.Fragment key={conn.to}>
+                <BreadcrumbItem>
+                  <BreadcrumbLink asChild>
+                    <Link to={conn.to}>{conn.label}</Link>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                {i < connections.length - 1 && <BreadcrumbSeparator />}
+              </React.Fragment>
+            ))}
+          </>
+        )}
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+}

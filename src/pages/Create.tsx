@@ -100,7 +100,7 @@ const Create = () => {
 
   const yantraOptions = [
     { value: "samrat-yantra", label: "Samrat Yantra" },
-    { value: "dhruva-darshak-pattika", label: "Dhruva Darshak Pattika" },
+    { value: "dhakshinottara-bhitti-yantra", label: "Dhakshinottara Bhitti Yantra" },
     { value: "rama-yantra", label: "Rama Yantra" }
   ];
 
@@ -110,7 +110,7 @@ const Create = () => {
       {isLoading && <LoadingOverlay />}
       <div className="text-center py-12 pt-28 bg-heritage-parchment-dark">
         <h1 className="font-display text-6xl font-bold text-heritage-burgundy">
-         YantraSrishti (यन्त्रसृष्टि)
+          YantraSrishti (यन्त्रसृष्टि)
         </h1>
       </div>
       <div className="pt-24 pb-16 px-8 flex-1 bg-heritage-parchment">
@@ -149,8 +149,18 @@ const Create = () => {
                     className="w-full h-14 px-6 bg-heritage-cream text-heritage-brown border-2 border-heritage-terracotta rounded-md font-body text-lg focus:outline-none focus:border-heritage-gold focus:shadow-[0_0_0_3px_rgba(201,169,97,0.2)] transition-all"
                   />
                 </div>
+                <div className="text-center text-heritage-brown">Or</div>
+                <Button
+                  variant="secondary"
+                  size="lg"
+                  onClick={handleUseCurrentLocation}
+                  className="w-full"
+                >
+                  <MapPin className="mr-2" size={18} />
+                  Use Current Location
+                </Button>
 
-                <div>
+                <div className="relative">
                   <label className="block font-serif font-semibold text-heritage-brown-medium mb-2">
                     Select Yantra
                   </label>
@@ -165,17 +175,17 @@ const Create = () => {
                       </option>
                     ))}
                   </select>
+                  <svg
+                    className="absolute right-4 top-[52px] w-5 h-5 text-heritage-brown pointer-events-none"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
                 </div>
 
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  onClick={handleUseCurrentLocation}
-                  className="w-full"
-                >
-                  <MapPin className="mr-2" size={18} />
-                  Use Current Location
-                </Button>
+
 
                 <Button
                   variant="hero"

@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { ModelViewer } from "@/components/ModelViewer";
 import samratModel from "../assets/models/samrat.glb";
 import ramaModel from "../assets/models/rama.glb";
+import dhakshinottaraModel from "../assets/models/dhakshinottara.glb";
 
 const Learn = () => {
   const yantras = [
@@ -17,11 +18,11 @@ const Learn = () => {
       externalLink: "https://jantarmantar.org/learn/observatories/instruments/samrat/index.html"
     },
     {
-      name: "Dhruva Darshak Pattika",
-      subtitle: "The Pole Star Indicator",
-      description: "This deceptively simple trapezoidal structure served one critical purpose: locating Dhruva Tara, the Pole Star, to establish True North. Its upper surface is inclined at the observatory's exact latitude, allowing astronomers to sight the Pole Star and confirm alignment—the foundational axis upon which all other observations depend.",
-      slug: "dhruva-darshak-pattika",
-     modelPath: null,
+      name: "Dhakshinottara Bhitti Yantra",
+      subtitle: "Measuring celestial meridian transits.",
+      description: "This towering meridian wall stands as a celestial gateway, aligned precisely north-south to intercept heavenly bodies at their moment of glory—the instant they reach their highest arc across the sky. Its graduated face captures stars and planets mid-transit, measuring their zenith distance with exacting precision. Every calculation, every prediction in the observatory flows from the coordinates recorded on this commanding vertical sentinel.",
+      slug: "dhakshinottara-bhitti-yantra",
+     modelPath: dhakshinottaraModel,
       externalLink: "https://www.youtube.com/watch?v=YLCz8_yA-T8"
     },
     {
@@ -99,11 +100,11 @@ const Learn = () => {
                                 Create This Yantra
                               </Button>
                             </Link>
-                            <a href={yantra.externalLink} target="_blank" rel="noopener noreferrer">
+                            <Link to={`/book/${yantra.slug}`}>
                               <Button variant="secondary" size="lg">
                                 Explore Detail
                               </Button>
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </>
@@ -125,11 +126,11 @@ const Learn = () => {
                                 Create This Yantra
                               </Button>
                             </Link>
-                            <a href={yantra.externalLink} target="_blank" rel="noopener noreferrer">
+                            <Link to={`/book/${yantra.slug}`}>
                               <Button variant="secondary" size="lg">
                                 Explore Detail
                               </Button>
-                            </a>
+                            </Link>
                           </div>
                         </div>
 

@@ -4,6 +4,7 @@ import { Compass, User, LogOut } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { LoginDialog } from "./LoginDialog";
+import { AIGuide } from "./AIGuide";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -135,30 +136,7 @@ export const Navbar = () => {
         </div>
       </nav>
 
-      {showChatbot && (
-        <div className="fixed bottom-8 right-8 z-50 w-96 h-[500px] bg-heritage-brown/95 backdrop-blur-md border-2 border-heritage-gold rounded-lg shadow-2xl flex flex-col">
-          <div className="p-4 border-b border-heritage-gold flex justify-between items-center">
-            <h3 className="font-display text-lg text-heritage-cream">AI Guide</h3>
-            <button onClick={() => setShowChatbot(false)} className="text-heritage-gold hover:text-heritage-cream">
-              ✕
-            </button>
-          </div>
-          <div className="flex-1 p-4 overflow-y-auto">
-            <div className="bg-heritage-burgundy/30 rounded-lg p-3 mb-3">
-              <p className="text-heritage-parchment text-sm font-body">
-                Welcome to YantraVeda! I can help you understand ancient astronomical instruments and guide you through creating your own calculations.
-              </p>
-            </div>
-          </div>
-          <div className="p-4 border-t border-heritage-gold">
-            <input
-              type="text"
-              placeholder="Ask me anything..."
-              className="w-full px-4 py-2 bg-heritage-cream text-heritage-brown border-2 border-heritage-bronze rounded-md focus:outline-none focus:border-heritage-gold font-body"
-            />
-          </div>
-        </div>
-      )}
+      {showChatbot && <AIGuide onClose={() => setShowChatbot(false)} />}
 
       <LoginDialog open={isLoginOpen} onOpenChange={setIsLoginOpen} />
     </>

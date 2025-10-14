@@ -99,12 +99,9 @@ export default {
           "50%": { filter: "drop-shadow(0 0 20px rgba(212, 175, 55, 0.8))" }
         },
         "move-left-to-right": {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(calc(100vw + 128px))" }
-        },
-        "move-right-to-left": {
-          "0%": { transform: "translateX(0) scaleX(-1)" },
-          "100%": { transform: "translateX(calc(-100vw - 128px)) scaleX(-1)" }
+          "0%": { transform: "translateX(0)", opacity: "1" },
+          "99%": { transform: "translateX(calc(100vw + 128px))", opacity: "1" },
+          "100%": { transform: "translateX(calc(100vw + 128px))", opacity: "0" }
         },
       },
       animation: {
