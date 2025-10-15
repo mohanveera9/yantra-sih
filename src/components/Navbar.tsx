@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
-import { Compass, User, LogOut } from "lucide-react";
+import { Compass, User, LogOut, Languages } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { LoginDialog } from "./LoginDialog";
@@ -16,6 +16,7 @@ export const Navbar = () => {
   const location = useLocation();
   const [showChatbot, setShowChatbot] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("English");
   const { user, logout, isAuthenticated } = useAuth();
 
   const isActive = (path: string) => location.pathname === path;
@@ -125,6 +126,61 @@ export const Navbar = () => {
                 Login
               </Button>
             )}
+
+            {/* Language Selector */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  aria-label="Change language"
+                  title={`Language: ${selectedLanguage}`}
+                  className="ml-4 text-heritage-gold hover:text-heritage-cream transition-all hover:scale-110 duration-300"
+                >
+                  <Languages size={28} />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                align="end"
+                className="w-64 max-h-80 overflow-auto bg-heritage-cream border-2 border-heritage-gold z-[60]"
+              >
+                {[
+                  "English",
+                  "Hindi",
+                  "Bengali",
+                  "Telugu",
+                  "Marathi",
+                  "Tamil",
+                  "Urdu",
+                  "Gujarati",
+                  "Kannada",
+                  "Malayalam",
+                  "Odia",
+                  "Punjabi",
+                  "Assamese",
+                  "Maithili",
+                  "Santali",
+                  "Kashmiri",
+                  "Nepali",
+                  "Konkani",
+                  "Sindhi",
+                  "Sanskrit",
+                  "Bodo",
+                  "Dogri",
+                  "Manipuri",
+                ].map((lang) => (
+                  <DropdownMenuItem
+                    key={lang}
+                    onClick={() => setSelectedLanguage(lang)}
+                    className={`font-body cursor-pointer ${
+                      selectedLanguage === lang
+                        ? "text-heritage-burgundy bg-heritage-parchment"
+                        : "text-heritage-brown hover:bg-heritage-parchment"
+                    }`}
+                  >
+                    {lang}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
             <button
               onClick={() => setShowChatbot(!showChatbot)}

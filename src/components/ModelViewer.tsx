@@ -125,5 +125,5 @@ export function ModelViewer({ modelPath }: ModelViewerProps) {
     };
   }, [modelPath]);
 
-  return <div ref={containerRef} className="w-full h-full min-h-[500px]" />;
+  return <div ref={containerRef} className="w-full h-full min-h-[360px]" />;
 }
